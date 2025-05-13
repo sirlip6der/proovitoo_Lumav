@@ -23,9 +23,7 @@
   const weather = ref(null)
   
   onMounted(async () => {
-    const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=Tallinn&appid=${API_KEY}&units=metric&lang=et`
-    )
+    const res = await fetch('/api/weather')
     weather.value = await res.json()
   })
   

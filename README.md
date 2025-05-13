@@ -1,22 +1,32 @@
 # Proovitöö (Front-End): Magento + Alokai + Ilmateade
 
+## 👋 Sissejuhatus
+
+Selles proovitöös panin püsti Vue Storefront 2 (Alokai OS) arenduskeskkonna ja lõin ilmaandmete kuvamise funktsionaalsuse. Eesmärk oli katsetada uue tehnoloogia omandamist, kasutada AI tööriista töö kiirendamiseks ning järgida häid arendus- ja koostööpõhimõtteid.
+
+---
+
 ## 📌 Eesmärk
 
-Luua Vue Storefront 2 (Alokai OS) arenduskeskkond, mis kuvab jooksva ilma (nt Tallinn) OpenWeather API abil. Visuaalne disain muutub sõltuvalt ilmastikuoludest. Projekt vastab proovitöö juhendile.
+Luua Nuxt 3 (Alokai / Vue Storefront 2) front-end, mis:
+- Kuvab Tallinna jooksva ilma OpenWeather API põhjal
+- Muudab disaini sõltuvalt ilmast
+- Kasutab `.env` failist API võtit
+- On versioonihalduses ja dokumenteeritud
 
 ---
 
 ## ⚙️ Kasutatud tehnoloogiad
 
-- Nuxt 3 (Alokai / Vue Storefront 2)
-- TailwindCSS (via @nuxtjs/tailwindcss)
-- OpenWeatherMap API
-- .env + useRuntimeConfig()
-- AI tööriist: ChatGPT (OpenAI)
+- **Nuxt 3** (Vue Storefront 2 / Alokai)
+- **TailwindCSS** (via `@nuxtjs/tailwindcss`)
+- **OpenWeatherMap API**
+- **.env + useRuntimeConfig()**
+- **AI tugi:** ChatGPT
 
 ---
 
-## 🚀 Kuidas tööle panna
+## 🚀 Kuidas projekti käivitada
 
 1. Klooni repo:
 ```bash
@@ -34,12 +44,12 @@ npm install
 OPENWEATHER_API_KEY=siia_sinu_api_voti
 ```
 
-4. Käivita arendusserver:
+4. Käivita arenduskeskkond:
 ```bash
 npm run dev
 ```
 
-5. Ava leht:
+5. Ava:
 [http://localhost:3000](http://localhost:3000)
 
 ---
@@ -47,40 +57,45 @@ npm run dev
 ## 🌦️ Funktsionaalsus
 
 - Kuvab jooksva ilma Tallinna kohta (kirjeldus + temperatuur)
-- Disain muutub vastavalt ilma tüübile (`clear`, `rain`, `cloud`)
-- Kasutatud TailwindCSS klassid kujundamiseks
-- API võti on `.env` failis, mitte koodis
+- Visuaalne taust muutub vastavalt ilmastikule:
+  - *Selge*: kollane
+  - *Pilves*: hall
+  - *Vihmane*: sinine
+- Kujundus tehtud TailwindCSS abil
+- API võti on `.env` failis (turvaline)
 
 ---
 
-## 🤖 Kasutatud AI prompt’id
+## 🤖 Kasutatud AI promptid
+
+AI abil sain kiiremini ja täpsemalt liikuda järgmistes osades:
 
 **Prompt 1:**  
-„Kuidas Nuxt 3 projektis fetchida OpenWeatherMap andmeid Composition API kaudu?“  
-→ Kasutati, et mõista `ref`, `onMounted`, `fetch` loogikat Vue 3-s.
+*Kuidas Nuxt 3 projektis fetchida OpenWeatherMap andmeid Composition API kaudu?*  
+→ Vue 3 + Composition API + `ref`, `onMounted`, `fetch`.
 
 **Prompt 2:**  
-„Kuidas lisada TailwindCSS Nuxt 3 projektile ilma `npx tailwindcss init` käsuta?“  
-→ Lahendus: kasutada `@nuxtjs/tailwindcss` moodulit.
+*Kuidas lisada TailwindCSS Nuxt 3 projektile ilma `npx tailwindcss init` käsuta?*  
+→ Lahendus oli `@nuxtjs/tailwindcss`.
 
 **Prompt 3:**  
-„Kuidas kasutada `.env` muutujat Nuxt 3-s ja saada see komponendi sees kätte?“  
-→ Kasutati `useRuntimeConfig()` + `runtimeConfig` lahendust.
+*Kuidas kasutada `.env` muutujat Nuxt 3-s ja saada see komponendi sees kätte?*  
+→ `useRuntimeConfig()` + `runtimeConfig.public` lahendus.
 
 ---
 
 ## 🧠 Esinenud probleemid ja lahendused
 
-| Probleem                          | Lahendus                                           |
-|-----------------------------------|----------------------------------------------------|
-| `npx tailwindcss init` ei töötanud | Kasutati `@nuxtjs/tailwindcss` moodulit             |
-| API võti ei laetud                | Kasutati `useRuntimeConfig()` + `.env`             |
-| Fetch ei töötanud                 | Parandatud backtick (`) süntaks URL-is              |
-| Andmeid ei kuvatud                | `console.log` abil selgitati välja API vastus      |
+| Probleem                           | Lahendus                                              |
+|------------------------------------|-------------------------------------------------------|
+| `npx tailwindcss init` ei töötanud | Kasutatud Nuxt moodulit `@nuxtjs/tailwindcss`        |
+| API võti ei laetud                 | `.env` + `useRuntimeConfig()` abil lahendatud        |
+| Fetch ei töötanud (`template literal`) | Parandatud URLi süntaks backtick’idega (`)      |
+| Andmeid ei kuvatud                | `console.log()` abil selgitati välja API vastus      |
 
 ---
 
-## 🗂️ Kaustastruktuur
+## 📁 Kaustastruktuur
 
 ```
 alokai-frontend/
@@ -89,24 +104,25 @@ alokai-frontend/
 ├── pages/
 │   └── index.vue
 ├── nuxt.config.ts
-├── .env          # ainult lokaalselt, ignoreeritud GitHubis
-├── .gitignore    # sisaldab .env kirjet
-└── README.md     # see fail
+├── .env           # ainult lokaalselt, ignoreeritud GitHubis
+├── .gitignore     # sisaldab .env kirjet
+└── README.md      # see fail
 ```
 
 ---
 
-## ✅ Tehtud
+## ✅ Tehtud ja valmis esitamiseks
 
-- [x] Vue Storefront 2 töötab
-- [x] Ilmateade kuvatakse OpenWeather API abil
-- [x] Kujundus muutub sõltuvalt ilmast
-- [x] Versioonihaldus GitHubis
-- [x] .env kasutusel, mitte kõvakodeeritud
-- [x] README sisaldab AI kasutust ja probleeme
+- [x] Vue Storefront 2 töötab lokaalselt
+- [x] Ilmaandmed kuvatakse API abil
+- [x] Kujundus reageerib ilmale
+- [x] Kood on GitHubis ja versioonihalduses
+- [x] AI kasutus ja probleemilahendus dokumenteeritud
 
 ---
 
-© 2025 – Proovitöö kandidaat  
-Autor: Sirli Põder GitHub:@sirlip6der
+## 👤 Autor
 
+**Nimi:** Sirli Põder  
+**GitHub:** [@sirlip6der](https://github.com/sirlip6der)  
+**Aasta:** 2025 – Front-End suuna proovitöö
