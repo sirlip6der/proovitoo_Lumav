@@ -41,7 +41,7 @@ npm install
 
 3. Loo `.env` fail ja lisa:
 ```
-OPENWEATHER_API_KEY=siia_sinu_api_voti
+OPENWEATHER_API_KEY= 'deab67fdfaa49eaa10206bc9848c9106'
 ```
 
 4. Käivita arenduskeskkond:
