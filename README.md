@@ -30,8 +30,8 @@ Luua Nuxt 3 (Alokai / Vue Storefront 2) front-end, mis:
 
 1. Klooni repo:
 ```bash
-git clone https://github.com/sirlip6der/magento-alokai-demo.git
-cd alokai-frontend
+git clone https://github.com/sirlip6der/proovitoo_Lumav.git
+
 ```
 
 2. Paigalda sõltuvused:
